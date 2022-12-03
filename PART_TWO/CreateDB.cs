@@ -131,9 +131,6 @@ internal class CreateDB
                      */
                     await command.ExecuteNonQueryAsync();
                     Console.WriteLine("Таблицю [Менеджери] заповненo успішно");
-
-
-                    Console.ReadKey(); Console.Clear();
                 }
                 catch (SqlException e) // якщо створення БД не получилось
                 {
@@ -173,9 +170,6 @@ internal class CreateDB
                      */
                     await command.ExecuteNonQueryAsync();
                     Console.WriteLine("Таблицю [Канцтовари] заповненo успішно");
-
-
-                    Console.ReadKey(); Console.Clear();
                 }
                 catch (SqlException e) // якщо створення БД не получилось
                 {
