@@ -16,7 +16,11 @@ internal class PrintProductByMaxPrice : IQuery
         var command = new SqlCommand
         {
             Connection = connection, // підключення передається в команду
+<<<<<<< HEAD
             CommandText = "SELECT [Тип канцтовару],MIN([Кількість]) AS [Мін. кількість] FROM [Канцтовари] GROUP BY [Тип канцтовару]" // текст команди
+=======
+            CommandText = "SELECT [Тип канцтовару],MAX([Собівартість]) AS [Мін. cобівартість] FROM [Канцтовари] GROUP BY [Тип канцтовару]" // текст команди
+>>>>>>> Добавьте файлы проекта.
         };
         var reader = await command.ExecuteReaderAsync(); // результат запиту записується в SQLDataReader
 

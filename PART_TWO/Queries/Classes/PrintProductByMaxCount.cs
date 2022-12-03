@@ -3,11 +3,6 @@ using System;
 using System.Data;
 using System.Threading.Tasks;
 
-<<<<<<< HEAD
-// Відображення всієї інформації про менеджерів
-=======
-// Показати канцтовари з максимальною кількістю одиниць
->>>>>>> Добавьте файлы проекта.
 internal class PrintProductByMaxCount : IQuery
 {
     public SqlConnection connection { get; }

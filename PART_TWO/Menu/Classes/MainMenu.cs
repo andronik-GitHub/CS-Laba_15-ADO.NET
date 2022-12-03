@@ -47,9 +47,11 @@ internal class MainMenu : IMenu
                     break;
                 case ("6"):
                     Console.WriteLine();
+                    await Query.ResultQueryAsync(new PrintProductByMinPrice(connection));
                     break;
                 case ("7"):
                     Console.WriteLine();
+                    await Query.ResultQueryAsync(new PrintProductByMaxPrice(connection));
                     break;
                 case ("exit"):
                     Console.WriteLine();
