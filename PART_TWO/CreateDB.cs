@@ -58,7 +58,7 @@ internal class CreateDB
                     Console.WriteLine("Таблицю [Менеджери] створено успішно");
 
 
-                    command.CommandText = // створення таблиці [Менеджери]
+                    command.CommandText = // створення таблиці [Канцтовари]
                         "CREATE TABLE [Канцтовари] " +
                         "( " +
                         "   [Назва канцтовара] NVARCHAR(50) NOT NULL, " +
@@ -72,6 +72,27 @@ internal class CreateDB
                         ")";
                     await command.ExecuteNonQueryAsync();
                     Console.WriteLine("Таблицю [Канцтовари] створено успішно");
+
+
+                    command.CommandText = // створення таблиці [Замовлення]
+                        "CREATE TABLE [Замовлення] " +
+                        "( " +
+                        "   [ID замовлення] INT NOT NULL IDENTITY(1000,1), " +
+                        "   [Назва фірми покупця] NVARCHAR(50) NOT NULL, " +
+                        "   [Назва канцтовара] NVARCHAR(50) NOT NULL, " +
+                        "   [Тип канцтовару] NVARCHAR(30) NOT NULL, " +
+                        "   [Кількість проданих канцтоварів] INT NOT NULL, " +
+                        "   [ID менеджера] INT NOT NULL, " +
+                        "   [Ціна замовлення] MONEY NOT NULL, " +
+                        "   [Дата продажу] DATE NOT NULL DEFAULT GETDATE(), " +
+                        " " +
+                        "   PRIMARY KEY ([ID замовлення]), " +
+                        "   CONSTRAINT FK_Замовлення_To_Менеджери FOREIGN KEY([ID менеджера]) REFERENCES Менеджери ([ID]) ON DELETE CASCADE, " +
+                        "   CONSTRAINT FK_Замовлення_To_Канцтовари FOREIGN KEY([Назва канцтовара],[Тип канцтовару])" +
+                        "               REFERENCES Канцтовари ([Назва канцтовара],[Тип канцтовару]) ON DELETE NO ACTION " +
+                        ")";
+                    await command.ExecuteNonQueryAsync();
+                    Console.WriteLine("Таблицю [Замовлення] створено успішно");
                 }
                 catch (SqlException e) // якщо створення таблиць не получилось
                 {
