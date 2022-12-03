@@ -3,16 +3,12 @@ using System;
 using System.Data;
 using System.Threading.Tasks;
 
-<<<<<<< HEAD
-// Відображення всієї інформації про менеджерів
-=======
-// Показати канцтовари з максимальною кількістю одиниць
->>>>>>> Добавьте файлы проекта.
-internal class PrintProductByMaxCount : IQuery
+// Показати канцтовари з мінімальною кількістю одиниць
+internal class PrintProductByMinCount : IQuery
 {
     public SqlConnection connection { get; }
 
-    public PrintProductByMaxCount(SqlConnection connection) => this.connection = connection;
+    public PrintProductByMinCount(SqlConnection connection) => this.connection = connection;
 
 
     public async Task Query() // приймається підключення і назва таблиці
@@ -20,7 +16,7 @@ internal class PrintProductByMaxCount : IQuery
         var command = new SqlCommand
         {
             Connection = connection, // підключення передається в команду
-            CommandText = "SELECT [Тип канцтовару],MAX([Кількість]) AS [Макс. кількість] FROM [Канцтовари] GROUP BY [Тип канцтовару]" // текст команди
+            CommandText = "SELECT [Тип канцтовару],MIN([Кількість]) AS [Мін. кількість] FROM [Канцтовари] GROUP BY [Тип канцтовару]" // текст команди
         };
         var reader = await command.ExecuteReaderAsync(); // результат запиту записується в SQLDataReader
 
