@@ -8,7 +8,8 @@ class PART_TWO
     {
         // Для відображення кирилиці
         Console.OutputEncoding = System.Text.Encoding.UTF8;
-        await CreateDB.Create();
+        //await CreateDB.Create();
+        await NewConnection.Connection();
 
 
         Console.ReadKey();

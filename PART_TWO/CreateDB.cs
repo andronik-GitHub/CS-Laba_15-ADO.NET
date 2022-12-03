@@ -49,7 +49,7 @@ internal class CreateDB
                         "CREATE TABLE [Менеджери] " +
                         "( " +
                         "   [ID] INT NOT NULL IDENTITY(1000,1), " +
-                        "   [Ім'я менеджера] NVARCHAR(50) NOT NULL, " +
+                        "   [Ім'я менеджера] NVARCHAR(40) NOT NULL, " +
                         "   [Заробітня плата] MONEY NOT NULL, " +
                         " " +
                         "   PRIMARY KEY ([ID]) " +
@@ -61,7 +61,7 @@ internal class CreateDB
                     command.CommandText = // створення таблиці [Канцтовари]
                         "CREATE TABLE [Канцтовари] " +
                         "( " +
-                        "   [Назва канцтовара] NVARCHAR(100) NOT NULL, " +
+                        "   [Назва канцтовара] NVARCHAR(80) NOT NULL, " +
                         "   [Тип канцтовару] NVARCHAR(30) NOT NULL, " +
                         "   [Кількість] INT NOT NULL, " +
                         "   [ID менеджера] INT NOT NULL, " +
@@ -78,8 +78,8 @@ internal class CreateDB
                         "CREATE TABLE [Замовлення] " +
                         "( " +
                         "   [ID замовлення] INT NOT NULL IDENTITY(1000,1), " +
-                        "   [Назва фірми покупця] NVARCHAR(100) NOT NULL, " +
-                        "   [Назва канцтовара] NVARCHAR(100) NOT NULL, " +
+                        "   [Назва фірми покупця] NVARCHAR(80) NOT NULL, " +
+                        "   [Назва канцтовара] NVARCHAR(80) NOT NULL, " +
                         "   [Тип канцтовару] NVARCHAR(30) NOT NULL, " +
                         "   [Кількість канцтоварів] INT NOT NULL, " +
                         "   [ID менеджера] INT NOT NULL, " +
