@@ -39,6 +39,7 @@ internal class MainMenu : IMenu
                     break;
                 case ("4"):
                     Console.WriteLine();
+                    await Query.ResultQueryAsync(new PrintProductByMaxCount(connection));
                     break;
                 case ("5"):
                     Console.WriteLine();
