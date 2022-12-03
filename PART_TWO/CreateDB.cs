@@ -55,8 +55,23 @@ internal class CreateDB
                         "   PRIMARY KEY ([ID]) " +
                         ")";
                     await command.ExecuteNonQueryAsync();
-
                     Console.WriteLine("Таблицю [Менеджери] створено успішно");
+
+
+                    command.CommandText = // створення таблиці [Менеджери]
+                        "CREATE TABLE [Канцтовари] " +
+                        "( " +
+                        "   [Назва канцтовара] NVARCHAR(50) NOT NULL, " +
+                        "   [Тип канцтовару] NVARCHAR(30) NOT NULL, " +
+                        "   [Кількість] INT NOT NULL, " +
+                        "   [ID менеджера] INT NOT NULL, " +
+                        "   [Собівартість] MONEY NOT NULL, " +
+                        " " +
+                        "   PRIMARY KEY ([Назва канцтовара],[Тип канцтовару]), " +
+                        "   CONSTRAINT FK_Канцтовари_To_Менеджери FOREIGN KEY([ID менеджера]) REFERENCES Менеджери ([ID]) ON DELETE CASCADE " +
+                        ")";
+                    await command.ExecuteNonQueryAsync();
+                    Console.WriteLine("Таблицю [Канцтовари] створено успішно");
                 }
                 catch (SqlException e) // якщо створення таблиць не получилось
                 {
